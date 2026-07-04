@@ -5,14 +5,14 @@ import dotenv from "dotenv";
 import schema from "../schema/schema.js";
 import colors from "colors"
 import connectDB from "./config/db.js";
-
+import cors from "cors"
 dotenv.config();
 
 const PORT  = process.env.PORT  || 5000
 
 
 const app  = express();
-
+app.use(cors())
 connectDB();
 app.use("/graphql", graphqlHTTP({
     schema:schema,
